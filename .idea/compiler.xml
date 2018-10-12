@@ -9,6 +9,8 @@
         <module name="peixuan" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel>
+      <module name="peixuan" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
