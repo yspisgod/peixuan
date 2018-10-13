@@ -32,6 +32,7 @@
     <mvc:resources mapping="/error/*.html" location="/error/" />
     <mvc:resources mapping="/commonality/**" location="/commonality/" />
     <mvc:resources mapping="/static/**" location="/static/" />
+    <mvc:resources mapping="/pictures/**" location="/pictures/" />
 
 
     <!--设置返回页面前缀和后缀-->
