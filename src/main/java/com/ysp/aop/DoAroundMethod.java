@@ -10,7 +10,7 @@ public class DoAroundMethod implements MethodInterceptor {
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         System.out.println("Aop参数==="+ Arrays.toString(methodInvocation.getArguments()));
         Object result = methodInvocation.proceed();
-
+        //test push th  file
         return result;
     }
 }
