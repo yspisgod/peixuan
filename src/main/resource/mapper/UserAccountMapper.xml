@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysp.dao.UserAccountMapper">
+  <resultMap id="BaseResultMap" type="com.ysp.entity.UserAccount">
+    <id column="SQE_NO" jdbcType="INTEGER" property="sqeNo" />
+    <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="USER_TYPR" jdbcType="INTEGER" property="userTypr" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SQE_NO, ACCOUNT, PASSWORD, USER_TYPR
+  </sql>
+  <select id="selectByExample" parameterType="com.ysp.entity.UserAccountExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from USER_ACCOUNT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from USER_ACCOUNT
+    where SQE_NO = #{sqeNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USER_ACCOUNT
+    where SQE_NO = #{sqeNo,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ysp.entity.UserAccountExample">
+    delete from USER_ACCOUNT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ysp.entity.UserAccount">
+    insert into USER_ACCOUNT (SQE_NO, ACCOUNT, PASSWORD, 
+      USER_TYPR)
+    values (#{sqeNo,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{userTypr,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ysp.entity.UserAccount">
+    insert into USER_ACCOUNT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sqeNo != null">
+        SQE_NO,
+      </if>
+      <if test="account != null">
+        ACCOUNT,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="userTypr != null">
+        USER_TYPR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sqeNo != null">
+        #{sqeNo,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userTypr != null">
+        #{userTypr,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ysp.entity.UserAccountExample" resultType="java.lang.Long">
+    select count(*) from USER_ACCOUNT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update USER_ACCOUNT
+    <set>
+      <if test="record.sqeNo != null">
+        SQE_NO = #{record.sqeNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.account != null">
+        ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userTypr != null">
+        USER_TYPR = #{record.userTypr,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update USER_ACCOUNT
+    set SQE_NO = #{record.sqeNo,jdbcType=INTEGER},
+      ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      PASSWORD = #{record.password,jdbcType=VARCHAR},
+      USER_TYPR = #{record.userTypr,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ysp.entity.UserAccount">
+    update USER_ACCOUNT
+    <set>
+      <if test="account != null">
+        ACCOUNT = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userTypr != null">
+        USER_TYPR = #{userTypr,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SQE_NO = #{sqeNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ysp.entity.UserAccount">
+    update USER_ACCOUNT
+    set ACCOUNT = #{account,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      USER_TYPR = #{userTypr,jdbcType=INTEGER}
+    where SQE_NO = #{sqeNo,jdbcType=INTEGER}
+  </update>
+</mapper>
