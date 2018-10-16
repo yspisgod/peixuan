@@ -12,7 +12,7 @@ $(function () {
     for(var i=0;i<count;i++){
         var size=Math.floor((Math.random() * 200) + 50)+"px";
         //创建一个圆球
-        $("#404body").append("<div id=\""+"circle"+i+"\" class='container'><img width=\""+size+"\" height=\""+size+"\" class=\"rounded-circle\" style=\"background-color: red;position: absolute;\"  src=\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539336866676&di=42d4a1cedd082354a7074cd29a7ae562&imgtype=0&src=http%3A%2F%2Fww1.sinaimg.cn%2Flarge%2F85d77acdgw1f4hqkshvw6g20dw0741k8.jpg\" '/><div class='icon-font text-right' style='position: absolute;font-size: 30px;color: white;'>Not Find</div></div>");
+        $("#404body").append("<div id=\""+"circle"+i+"\" class='container'><img width=\""+size+"\" height=\""+size+"\" class=\"rounded-circle\" style=\"background-color: red;position: absolute;\"  src=\"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539336866676&di=42d4a1cedd082354a7074cd29a7ae562&imgtype=0&src=http%3A%2F%2Fww1.sinaimg.cn%2Flarge%2F85d77acdgw1f4hqkshvw6g20dw0741k8.jpg\" '/><div class='icon-font text-right' style='position: absolute;font-size: 30px;color: white;'>无法找到</div></div>");
         //获取随机值
         var x = Math.floor((Math.random()*bodyWidth)+1);
         var y = Math.floor((Math.random()*bodyHeight)+1);
